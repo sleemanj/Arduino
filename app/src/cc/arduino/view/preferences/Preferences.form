@@ -153,6 +153,13 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="extendedAdditionalUrlFieldWindow" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="additionalLibraryManagerLabel" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="additionalLibraryManagerField" min="-2" pref="500" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="extendedAdditionalLibraryUrlFieldWindow" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -210,6 +217,14 @@
                                   <Component id="additionalBoardsManagerField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="extendedAdditionalUrlFieldWindow" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="additionalLibraryManagerLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="additionalLibraryManagerField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="extendedAdditionalLibraryUrlFieldWindow" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="morePreferencesLabel" min="-2" max="-2" attributes="0"/>
@@ -378,6 +393,46 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
                   </AuxValues>
                 </Component>
+                
+                <Component class="javax.swing.JLabel" name="additionalLibraryManagerLabel">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="tr(&quot;Additional Library Manager URLs: &quot;)" type="code"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="tr(&quot;Enter a comma separated list of urls&quot;)" type="code"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JTextField" name="additionalLibraryManagerField">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="tr(&quot;Enter a comma separated list of urls&quot;)" type="code"/>
+                    </Property>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="extendedAdditionalLibraryUrlFieldWindow">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                      <Connection code="new ImageIcon(Theme.getThemeImage(&quot;newwindow&quot;, this, Theme.scale(16), Theme.scale(14)))" type="code"/>
+                    </Property>
+                    <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+                      <Insets value="[1, 1, 1, 1]"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="extendedAdditionalLibraryUrlFieldWindowActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+                  </AuxValues>
+                </Component>
+                
                 <Component class="javax.swing.JLabel" name="morePreferencesLabel">
                   <Properties>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">

@@ -37,6 +37,7 @@ import cc.arduino.utils.ArchiveExtractor;
 import cc.arduino.utils.MultiStepProgress;
 import processing.app.BaseNoGui;
 import processing.app.I18n;
+import processing.app.PreferencesData;
 import processing.app.Platform;
 import processing.app.helpers.FileUtils;
 
@@ -69,6 +70,22 @@ public class LibraryInstaller {
       // Download interrupted... just exit
       return;
     }
+    
+    // Step 1.5 Download additional indexes and merge into index
+    String additionalLibraryURLs[] = PreferencesData.split(',');
+    for(int x = 0; x < additionalLibraryURLs.length; x++) {
+      File additionalTmpFile = new File(outputFile.getAbsolutePath() + "." + x + ".tmp");
+      try {
+        GZippedJsonDownloader gZippedJsonDownloader = new GZippedJsonDownloader(downloader, new URL(additionalLibraryURLs[x]));
+        gZippedJsonDownloader.download(additionalTmpFile, progress, I18n.format(tr("Downloading additional index: {0}"), additionalLibraryURLs[x]), progressListener);
+      } catch (InterruptedException e) {
+        // Download interrupted... just do next
+        continue
+      }
+      
+      // Now we need to merge that into the index
+    }
+    
     progress.stepDone();
 
     // TODO: Check downloaded index

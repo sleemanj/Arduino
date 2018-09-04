@@ -124,6 +124,11 @@ public class Preferences extends javax.swing.JDialog {
     additionalBoardsManagerLabel = new javax.swing.JLabel();
     additionalBoardsManagerField = new javax.swing.JTextField();
     extendedAdditionalUrlFieldWindow = new javax.swing.JButton();
+    
+    additionalLibraryManagerLabel = new javax.swing.JLabel();
+    additionalLibraryManagerField = new javax.swing.JTextField();
+    extendedAdditionalLibraryUrlFieldWindow = new javax.swing.JButton();
+    
     morePreferencesLabel = new javax.swing.JLabel();
     preferencesFileLabel = new javax.swing.JLabel();
     arduinoNotRunningLabel = new javax.swing.JLabel();
@@ -227,6 +232,24 @@ public class Preferences extends javax.swing.JDialog {
     });
     extendedAdditionalUrlFieldWindow.getAccessibleContext().setAccessibleName("New Window");
 
+    
+    additionalLibraryManagerLabel.setText(tr("Additional Library Manager URLs: "));
+    additionalLibraryManagerLabel.setToolTipText(tr("Enter a comma separated list of urls"));
+    additionalLibraryManagerLabel.setLabelFor(additionalBoardsManagerField);
+
+    additionalLibraryManagerField.setToolTipText(tr("Enter a comma separated list of urls"));
+
+    extendedAdditionalLibraryUrlFieldWindow.setIcon(new ImageIcon(Theme.getThemeImage("newwindow", this, Theme.scale(16), Theme.scale(14))));
+    extendedAdditionalLibraryUrlFieldWindow.setMargin(new java.awt.Insets(1, 1, 1, 1));
+    extendedAdditionalLibraryUrlFieldWindow.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        extendedAdditionalLibraryUrlFieldWindowActionPerformed(evt);
+      }
+    });
+    extendedAdditionalLibraryUrlFieldWindow.getAccessibleContext().setAccessibleName("New Window");
+
+    
+    
     morePreferencesLabel.setForeground(Color.GRAY);
     morePreferencesLabel.setText(tr("More preferences can be edited directly in the file"));
 
@@ -374,7 +397,13 @@ public class Preferences extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(additionalBoardsManagerField, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(extendedAdditionalUrlFieldWindow)))
+                .addComponent(extendedAdditionalUrlFieldWindow))
+              .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(additionalLibraryManagerLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(additionalLibraryManagerField, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(extendedAdditionalLibraryUrlFieldWindow)))
             .addGap(0, 0, Short.MAX_VALUE)))
         .addContainerGap())
     );
@@ -428,6 +457,11 @@ public class Preferences extends javax.swing.JDialog {
             .addComponent(additionalBoardsManagerLabel)
             .addComponent(additionalBoardsManagerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
           .addComponent(extendedAdditionalUrlFieldWindow))
+         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addComponent(additionalLibraryManagerLabel)
+            .addComponent(additionalLibraryManagerField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(extendedAdditionalLibraryUrlFieldWindow))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(morePreferencesLabel)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -693,7 +727,15 @@ public class Preferences extends javax.swing.JDialog {
     additionalBoardsManagerURLTextArea.onOk(e -> additionalBoardsManagerField.setText(additionalBoardsManagerURLTextArea.getText()));
     additionalBoardsManagerURLTextArea.setVisible(true);
   }//GEN-LAST:event_extendedAdditionalUrlFieldWindowActionPerformed
+  
+  private void extendedAdditionalLibraryUrlFieldWindowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extendedAdditionalLibraryUrlFieldWindowActionPerformed
+    final AdditionalLibraryManagerURLTextArea additionalLibraryManagerURLTextArea = new AdditionalLibraryManagerURLTextArea(this);
+    additionalLibraryManagerURLTextArea.setText(additionalLibraryManagerField.getText());
+    additionalLibraryManagerURLTextArea.onOk(e -> additionalLibraryManagerField.setText(additionalLibraryManagerURLTextArea.getText()));
+    additionalLibraryManagerURLTextArea.setVisible(true);
+  }//GEN-LAST:event_extendedAdditionalLibraryUrlFieldWindowActionPerformed
 
+  
   private void browseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_browseButtonActionPerformed
     File dflt = new File(sketchbookLocationField.getText());
     File file = Base.selectFolder(tr("Select new sketchbook location"), dflt, this);
@@ -710,6 +752,8 @@ public class Preferences extends javax.swing.JDialog {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JTextField additionalBoardsManagerField;
   private javax.swing.JLabel additionalBoardsManagerLabel;
+  private javax.swing.JTextField additionalLibraryManagerField;
+  private javax.swing.JLabel additionalLibraryManagerLabel;
   private javax.swing.JLabel arduinoNotRunningLabel;
   private javax.swing.JRadioButton autoProxy;
   private javax.swing.JTextField autoProxyPACURL;
@@ -729,6 +773,7 @@ public class Preferences extends javax.swing.JDialog {
   private javax.swing.JCheckBox displayLineNumbersBox;
   private javax.swing.JCheckBox enableCodeFoldingBox;
   private javax.swing.JButton extendedAdditionalUrlFieldWindow;
+  private javax.swing.JButton extendedAdditionalLibraryUrlFieldWindow;
   private javax.swing.JCheckBox externalEditorBox;
   private javax.swing.JCheckBox cacheCompiledCore;
   private javax.swing.JTextField fontSizeField;
@@ -843,6 +888,7 @@ public class Preferences extends javax.swing.JDialog {
     PreferencesData.setBoolean("editor.save_on_verify", saveVerifyUploadBox.isSelected());
 
     PreferencesData.set("boardsmanager.additional.urls", additionalBoardsManagerField.getText().replace("\r\n", "\n").replace("\r", "\n").replace("\n", ","));
+    PreferencesData.set("librarymanager.additional.urls", additionalLibraryManagerField.getText().replace("\r\n", "\n").replace("\r", "\n").replace("\n", ","));
 
     PreferencesData.set(Constants.PREF_PROXY_TYPE, proxyTypeButtonGroup.getSelection().getActionCommand());
     PreferencesData.set(Constants.PREF_PROXY_PAC_URL, autoProxyUsePAC.isSelected() ? autoProxyPACURL.getText() : "");
@@ -915,7 +961,8 @@ public class Preferences extends javax.swing.JDialog {
     saveVerifyUploadBox.setSelected(PreferencesData.getBoolean("editor.save_on_verify"));
 
     additionalBoardsManagerField.setText(PreferencesData.get("boardsmanager.additional.urls"));
-
+    additionalLibraryManagerField.setText(PreferencesData.get("librarymanager.additional.urls"));
+    
     disableAllProxyFields();
     String proxyType = PreferencesData.get(Constants.PREF_PROXY_TYPE, Constants.PROXY_TYPE_AUTO);
 
